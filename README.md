@@ -1,5 +1,6 @@
 Rent Predition in progress....
 
+TODO: Area, Price, Location, Rooms, Title, Subtitle, Descriptions, Advetisement Date, 
 
 For this purpose you use following commands:
 
