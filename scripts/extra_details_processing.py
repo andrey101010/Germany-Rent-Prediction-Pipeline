@@ -18,12 +18,11 @@ def get_unique_details(details_column):
     for details in details_column:
         list_details = details.split(', ')
         for ld in list_details:
-            if ld == "...": # eliminating unwanted words
-                break
-            elif ld == 'No extra details':
-                break
             unique_details.add(ld)
+    remove_words = {'...', 'No extra details'}
+    unique_details = unique_details.difference(remove_words) # remove unwanted words
     return unique_details
+
 unique_details_new = get_unique_details(housing_orig_df['Extra details']) 
 print(unique_details_new) # print the features
 # %%
@@ -34,6 +33,7 @@ def detail_dataframe_creator(original_df, unique_details_set):
     df = pd.DataFrame(columns=unique_details_set)
     output_df = pd.concat([original_df, df])
     return output_df
+
 new_df = detail_dataframe_creator(housing_orig_df, unique_details_new)
 #new_df.head()
 # %%
@@ -50,6 +50,7 @@ def create_final_df(input_df, unique_set):
             input_df[element][i] = 1
     input_df.replace(np.nan, 0, inplace=True)
     return input_df.drop(columns=['Extra details'], inplace=True)
+    
 final_df = create_final_df(new_df, unique_details_new)
 # new_df.head()
 new_df.to_csv(r'../data/housing_data_hamburg_df.csv')
