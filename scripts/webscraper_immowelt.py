@@ -68,7 +68,7 @@ while i != 45:
         
     # location = soup.find_all('div')
 # %% Writing the scraped data into file
-file = open(r'./data/housing_data_hamburg.txt', "w+")
+file = open(r'./data/housing_data_hamburg.txt', "w+", encoding='UTF-8')
 
 head = "Area" + "\t" + "Rooms" + "\t" + "Location" + "\t" + "Extra details" + '\t' + "Rent" + "\n"
 
